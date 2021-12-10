@@ -1,615 +1,287 @@
-/*＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-共通設定（トップページだけじゃなくて他のページも共通
-＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝*/
+/* ＝＝＝＝＝＝＝＝＝＝＝
+全体の設定と汎用的なクラス
+＝＝＝＝＝＝＝＝＝＝＝＝*/
 body{
-    font-size: 16px;
-    color: #333;
+    font-size: 17px;
+    color: #3e3e3e;
     line-height: 2;
-    font-family: "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Osaka", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;;
-    overflow-x: hidden;/*右にはみ出したものを消す*/
-    /*overflow:hidden;を入れると下にスクロールすらできない*/
+    font-family: "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Osaka", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+    background-color: #f7f7f7;
 }
-
+html{
+    scroll-behavior: smooth;
+}
 a{
-    color: #f77237;
-    text-decoration: none;/*下線を消す*/
+    color: #337ab7;
+    text-decoration: none;
 }
-
 a:hover{
     opacity: 0.6;
 }
-
-.attention{
-    color: red;
-}
-
 /*＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 汎用クラス
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝*/
-/*cssは後に書いたものに打ち消される*/
 .inner{
-    width: 1000px;
+    max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
+    background-color: #fff;
 }
 
 .title{
-    font-size: 26px;
-    text-align: center;
-    line-height: 1;
-    margin-bottom: 30px;
+    font-size: 25px;
+    border-left: 9px solid #23527c;
+    padding: 10px 25px 10px ;
+    margin-bottom: 50px;
+    background-color: #f7f7f7;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
-.btn a{
-    background-image: linear-gradient(to right,#3cad5a 50%,transparent 50%);
-    /*to topにすればボーダーに変わる*/
-    /* background: no-repeat; */
-    background-size: 10px 10px;
-    border: 1px solid #3cad5a; /*飲食店で青、紫は使いにくい 補色＝反対色 or 三角形や四角形にすれば間違いない*/
-    width: 270px;
-    display: block;
-    color: #3cad5a; /*いろんな緑がある中での選択理由（カラーピッカーで検索）*/
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 65px;
+h3{
+    font-size: 22px;
+    border-left: 7px solid #23527c;
+    padding: 10px 25px 10px;
+    background-color: #fff;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 50px;
 }
-
-.btn a:hover{
-    background-color: #3cad5a;
-    opacity: 1;/*共通設定で0.6にしていたから戻す*/
-    color: #fff;
-    transition: 0.3s;/*遷移＝うつりかわり*/
-}
-/*文字にアンダーライン*/
-.mark{
-    background-image: linear-gradient(to top,rgba(247,114,55,0.4)40%,transparent 40%);
-    background-size: 0 100%;
-    background-repeat: no-repeat;
-    transition: 0.3s;
-}
-/* .mark:hover{
-    background-size:100% 100%;
-} */
-
-.mark.on{
-    background-size:100% 100%;
-}
-
-/*詳細度＝どれくらい詳しく書かれているか（点数表が存在する）、同点の場合は下に書かれたもの優先*/
-html body main .row{
-    padding-top: 70px;
-    padding-bottom: 70px;
-}/*paddingは相殺されない*/
-
-.pb0{/*bottom_contents row pb0 → class10点扱い、なんとなく意識しておく*/
-    padding-bottom: 0!important;
-}
-/*他に手がないときにpb0を使う
-!importantが最強10000点
-importantを使うなら他には使わない*/
-.fadein{
-    opacity: 0;
-    transform: translateY(80px);/*下にあるのが動く*/
-    transition: 0.5s;
-}
-
-.fadein.on{
-    opacity: 1;
-    transform: translateY(0);/*下にあるのが動く*/
-}
-
-.leftin{
-    transform: translateX(-500px);
-    transition: 0.5s;
-}
-
-.leftin.on{
-    transform:translateX(0);
-}
-
-.rightin{
-    transform: translateX(800px);
-    transition: 0.5s;
-}
-
-.rightin.on{
-    transform: translateX(0);
-}
-
-/* =======
-ヘッダー
-========*/
-header{
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-header .inner{
-    display: flex;
-    align-items: center; /*flexにしたうえで使えるalign-items*/
-    justify-content: space-between;
-}
-
-header ul{
-    display: flex;
-    justify-content: space-between;
-}
-
-header ul li{
-    margin-left: 20px;/*一番左のnavの左マージンはムダだが無視*/
-}
-/* =======
-キービジュアル
-========*/
-.key{
-    margin-bottom: 30px;
-    background-image: url(../img/key2.jpg);
-    height: 500px;
-    background-size: cover; /*Y軸のセンター*/
-    background-position: center; /*X軸のセンター*/
-}
-
-.key .t_wrap{
-    display: table;
-    height: 500px;
-    width: 100%;
-}
-/*tableは文字にしか高さ、幅が取れない、ゆえに高さ,widthを入れる*/
-
-.key .cell {
-    vertical-align: middle;
-    display: table-cell;
-    text-align: center;
-}
-/* divタグに対してvertical-alignは来ない */
-/* display: table-cell; テーブル要素に見せかける */
-
-.key .cell p{
-    font-size: 46px;
-    line-height: 1.5;
-    color: #fff;
-    background-color: rgba(247, 114, 55,0.5);
-    font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
-    display: inline-block;
-    padding: 46px;
-}
-/* 要素は横幅と高さの指定が可能 */
-
-.key .cell p span{
-    font-size: 21px;
-}
-
-/* =======
-スクロール
-========*/
-.scroll{
-    text-align: center;
-    color: #999; /*ちょっと薄いグレー*/
-    line-height: 1;
-}
-
-.scroll .material-icons{
-    font-size: 40px; 
-    border: 1px solid #999;
-    border-radius: 40px; 
-}
-/*検証でデフォルトfont-sizeが見れる→マウスをのせる*/
-/* マウスをのせるとサイズがわかる42→21以上or半分以上を入れておけばOK*/
-
-/* =======
-TOP CHALONについて
-========*/
-.top_about .lead{
-    width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: justify; /*はじの文字のズレを多少直してくれる*/
-    margin-bottom: 30px;
-}
-
-/* =======
-TOP MENUについて
-========*/
-.top_menu .menu_wrap{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 30px;
-}
-
-.top_menu figcaption{
-    text-align: center;/*.top_menu .menu_wrapに入れてもOK*/
-}
-
-/* =======
-TOP お菓子教室について
-========*/
-.top_lesson{
-    background-color: rgba(247, 114, 55, 0.4);
-}
-
-.top_lesson .lesson_wrap{
-    display: flex;
-    margin-bottom: 30px;
-}
-
-.top_lesson .lesson_wrap .lesson_img{
-    margin-right: 30px;
-}
-
-/* =======
-TOP bottom_contents
-========*/
-.bottom_contents > div{ /*.bottom_contents >.div 子要素のdivを指定できる*/
-    display: flex;
-    justify-content: space-between;
-}
-
-.bottom_contents > div section{ /*それぞれのdivに対して470pxを持たせる*/
-    width: 470px;
-}
-
-.top_voice h2 + div{/*新しい書き方→h2のすぐ下のdivタグ、+くっつてる*/
-    display: flex;
-    margin-bottom: 30px;
-}
-
-.top_voice h2 + div > p{ /*h2のすぐ下のdiv、+くっつてる */
-    margin-right: 20px;
-}
-
-.top_voice h2 + div div p{/*このくらいが適切*/
-    line-height: 1;
-}
-
-.top_voice h2 + div div p:first-child{/*1個目のPタグだけが選べる、最初の子要素 nth-child(1)でもOK*/
-    font-size: 12px;
-    margin-bottom: 5px;
-}
-
-.top_voice h2 + div div p:nth-child(2){ /*n番目→2番目の*/
-    margin-bottom: 15px;
-}
-
-.top_voice h2 + div div p:last-child{ /*最後の classとの使い分け、ムリに使う必要なし*/
-    line-height: 1.5;
-}
-
-.top_news dl{
-    line-height: 1.5; /*line-height: 2;から1.5にする*/
-    margin-bottom: 15px;
-}
-
-.top_news dl:last-of-type{ /*of type 何番目の*/
-    margin-bottom: 30px;
-}
-
-/*上記の別解 nth-child(4)にすると3つ目の下があく→h2から計算するのでdl3番目があく→つまりnth-childを使うなら5番目を使う
-.top_news dl:last-child → 最後の子要素のDLという意味→存在しない
-dl:last-of-typeにすると最後のdlタグになる
-*/
-/* 「nth-child」は兄弟関係の要素をカウントするのに対して、「nth-of-type」は指定した要素のみをカウントします。 */
-/* 
-.top_news .btn{
-    margin-top: 30px;
-} */
-
-/* =======
-フッター
-========*/
-/*例外的な処理*/
 
 footer{
-    margin-top: 150px;
-    background-color: #f77237;
-    color: #fff; /*6/22 1限*/
-    padding-top: 30px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    /* background-color: aqua; */
 }
 
-footer a{
-    color: #fff;
+img {
+    width: 100%;
+    height: auto;
 }
-
-footer .fotter_logo{
-    margin-bottom: 30px ;
-}
-
-footer .footer_wrap{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 30px;
-}
-
-footer .footer_left ul{
-    list-style-position: inside; /* マーカー・の位置 */
-    list-style: disc;
-    /* 丸ポッチを・の点にする */
-    /* list-style: disc inside; ショートハンドプロパティ */
-}
-
-footer .footer_left ul ul{
-    padding-left: 1em; /*1emは1文字分*/
-}
-
-footer .footer_right ul{
-    list-style: none; /*・点はいらない*/
-    /* display: flex; これでもOK */
-    margin-bottom: 30px;
-    font-size: 0; /*<li>のあとの改行消せる*/
-}
-
-footer .footer_right ul li{
-    display: inline; /*liはブロック要素のため縦並び→inlineでライン要素に変えてもOK、方法論のひとつ。display: flexでもOK */
-    /*inlineは変な隙間ができる*/
-    font-size: 16px;
-    margin-right: 10px;
-}
-
-footer .footer_right dt{
-    border-bottom: 1px solid #fff;
-    margin-bottom: 10px;
-}
-
-footer .footer_right dt{
-    line-height: 1.5;
-}
-
-footer .copy{
-    text-align: center;
-}
-
-/* =======
-下層ページ共通
-========*/
-/*トップページ以外はunder_titleが入るから*/
-.under_title{
-    height: 180px;
-    background-size: cover;
-    background-position: center center;
-    padding-top: 30px; /*画像がpadding分、伸びしてまうのでheightを30pxマイナスする*/
-    margin-bottom: 20px;
-}
-
-.under_title h1{
-    background-color: rgba(255, 255, 255, 0.5);
-    font-size: 26px;
-    line-height: 1; /* line-height: 2;が効いてるから */
-    /* inlineは上下のpaddingがとれない、使いにくい */
-    display: inline-block;
-    padding: 8px 13px;
-    /*8,13の算出方法は1.6倍*/
-}
-
-/*擬似要素css
-.under_title h1::after{
-    content: "なんかしら文字";
-} */
-
-/* =======
-パンくず
-========*/
-.bread ul{
-    list-style: none;
-    display: flex;
-    margin-bottom: 20px;
-}
-
-.bread ul li::after{
-    content: ">";
-    padding-left: 7px;
-    padding-right: 7px;
-}
-
-.bread ul li:last-child::after{
-    content:""
-}
-
-/* 2カラム */
-
-.col_wrap{
-    display: flex;
-    justify-content: space-between;
-}
-
-.col_wrap main{
-    width: 650px;
-}
-
-.col_wrap .side{
+.w300 {
     width: 300px;
 }
 
-.col_wrap .side ul{
-    list-style: none; /* ・を消す */
-    margin-bottom: 20px;
-}
-
-.col_wrap .side ul li{
-    border-bottom: 1px solid #f77237;
-    text-align: center;
-    line-height: 65px;
-}
-
-.col_wrap .side ul li a{
-    display: block;
-}
-    /* aタグに対して領域を持たせる */
-
-.col_wrap .side ul li a:hover,
-.col_wrap .side ul li.current a{
-    background-color: #f77237;
-    color: #fff;
-    opacity: 1;
-}
-/* opacity=不透明度 */
-/* li.current→要素に続けてクラス名を指定することで、そのクラス名が付加された要素に装飾が適用されます。 */
-/* 上記の意味はliタグのクラス名.currentがついているaタグに適用*/
-/* 「,」の意味はAND？ ホバーしてもオレンジ、currentに対してはホバーしなくてもオレンジ*/
-
-/* =======
-お菓子教室 <body class="lesson">
-========*/
-
-.lesson .under_title{
-    background-image: url(../img/lesson_main.jpg);
-    height: 180px;
+.oya{
+    background-image: url(../img/vertua.jpg);
+    width: 300px;
+    height: 225px;
     background-size: cover;
-     /*横もしくは縦を100%表示させる*/
-    background-position: center center;
-    /* background-position; x y; */
-
+    background-position:center;
 }
 
-.lesson main .lesson_box{
-    display: flex;
-    justify-content: space-between; 
+@media screen and (max-width:520px){
+    .title{
+        margin-left: 5%;
+        margin-right: 5%;
+    }
 }
-
-.lesson main .lesson_box + .lesson_box{ /* +は隣を表す、延々と繰り返す意味 */
-    margin-top: 60px;
-}
-
-/* ↓ 画像と文字が逆転する → 飽きない (2)or偶数の意味even、奇数はodd*/
-.lesson main .lesson_box:nth-child(even){
-    flex-direction: row-reverse;
-}
-
-.lesson main .lesson_box div{
-    width: 315px;
-}
-
-.lesson main .lesson_box div h2{
-    text-align: left;
-}
-
-.lesson main .lesson_box div p{
-    text-align: justify;
-}
-
-.lesson main .gaiyou{
-    margin-top: 140px;
-}
-
-.lesson main .gaiyou table th,
-.lesson main .gaiyou table td{
-    border: 1px solid #ccc;
-    height: 80px; 
-    vertical-align: middle; 
-    /*基本的には上に揃う*/
-    /*th,tdに対してのみvertical-alignが効く*/
-}
-
-.lesson main .gaiyou table{
-    width: 100%;
-    margin-bottom: 30px;
-}
-
-.lesson main .gaiyou table th{
-    width: 200px;
-    background-color: #f77237;
-    color: #fff;
-}
-
-.lesson main .gaiyou table td{
-    padding-left: 1em;
-}
-
-/* =======
-お申込みページ <body class="contact">
-========*/
-.contact .under_title{
-    background-image: url(../img/contact_main.jpg);
-}
-
-.contact .flow_area{
-    margin-bottom: 70px;
-}
-
-.contact .flow_area ul{
-    list-style: none;
-    display: flex;
-    justify-content: space-evenly; /*space-evenly左右真ん中のスペースを等間隔に*/
-}
-
-.contact .flow_area ul li{
-    border: 1px solid #f77237;
-    color: #f77237;
-    width: 90px;
-    line-height: 90px;
+/* ＝＝＝＝＝＝＝＝＝＝＝
+header
+＝＝＝＝＝＝＝＝＝＝＝＝*/
+header .inner{
+    padding-top: 15px;
+    padding-bottom: 15px;
     text-align: center;
-    border-radius: 90px;
+    background-color: #fff;
 }
-/* liはブロック要素、高さは文字分のみ*/
 
-.contact .flow_area ul li.current{ /*半角スペースにする*/
-    background-color: #f77237;
+header .inner a{
+    color: #7b7b7b;
+    font-size: 22px;
+}
+/* ＝＝＝＝＝＝＝＝＝＝＝
+category
+＝＝＝＝＝＝＝＝＝＝＝＝*/
+.category ul{
+    display: flex;
+}
+
+.category ul li:first-child{
+    width: 200px;
+    text-align: center;
+    line-height: 40px;
+    list-style: none;
+}
+
+.category ul li:not(:first-child){
+    width: 200px;
+    text-align: center;
+    line-height: 40px;
+    border-left: solid 1px #fff;
+    list-style: none;
+}
+
+.category ul li a{
+    background-color: #23527c;
     color: #fff;
+    display: block;
+    transition: 0.3s;
+    font-size: 14px;
+    font-weight: bold;
+}
+@media screen and (max-width:520px){
+    .category ul li a{
+        font-size: 12px;
+        font-weight:lighter;
+    }
+}/*======max-width:520px==========*/
+/* ＝＝＝＝＝＝＝＝＝＝＝＝
+Profile
+＝＝＝＝＝＝＝＝＝＝＝＝＝*/
+.top_about .inner{
+    padding-bottom: 50px;
+    padding-top: 50px;
 }
 
-.contact dl{
-    margin-bottom: 30px;
+.top_about .top_about_wrap{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.top_about .top_about_wrap .Profile{
+    width: 50%;
 }
 
-/* .contact #daihyou{
-    width: 400px;
-} */
-
-.contact input[type="text"],
-.contact input[type="email"]{
-    width: 400px;
-    border: 1px solid #ccc;
-    padding: 1em;/*入力したものを読みやすく*/
-}
-/* inputタグかつtype属性がtextのインプットタグ*/
-/* text、emailに対して*/
-/* ,はANDの意味*/
-
-.contact input[type="radio"]+label,
-.contact input[type="checkbox"]+label{
-    padding: 5px;
-}
-/* ラジオ、チェックボックスの隣接のlabel padding*/
-
-.contact input[type="radio"]:checked + label{
-    background-color: #f77237;
-    color: #fff;
-}
-/*ラジオボタンがチェックされた隣接のlabel*/
-
-.contact input[type="checkbox"]:checked + label{
-    background-color: #3cad5a;
-    color: #fff;
-}
-/*チェックボックスがチェックされたら隣接のlabel*/
-
-.contact select{
-    padding: 1em;
-    border: 1px solid #ccc;
-}
-
-.contact textarea{
-    border: 1px solid #ccc;
+.top_about table{
     width: 100%;
-    height: 100px;
-    padding: 1em;
+} 
+.top_about table th,
+.top_about table td{
+    border: 1px solid #7f7f7f;
+    padding: 10px ;
+}
+.top_about table th{
+    width: 110px;
+    color: #337ab7;
+    background-color: #f4fbff;
+    font-weight: normal;
+    vertical-align: middle;
 }
 
-.contact button{
-    border: none;
-    width: 270px;
-    height: 70px; /*ボタンの場合はheightでもちゃんと真ん中にくる*/
-    background-color: #3cad5a;
+.top_about .birthphoto{
+    width: 50%;
+}
+
+.top_about .birthphoto figure .w300{
+    margin-left: auto;
+    margin-right: auto;
+}
+.top_about .birthphoto figure figcaption{
+    text-align: center;
+}
+
+@media screen and (max-width:520px){
+    .top_about .top_about_wrap{
+        flex-direction: column;
+    }
+    .top_about .top_about_wrap .Profile{
+        width: 100%;
+        margin-bottom: 50px;
+    }
+    .top_about .top_about_wrap .birthphoto{
+        width: 100%;
+    }
+    .top_about .top_about_wrap .birthphoto figure{
+        margin-bottom: 30px;
+    }
+}
+/* ＝＝＝＝＝＝＝＝＝＝＝
+コンテンツ
+＝＝＝＝＝＝＝＝＝＝＝＝*/
+.top_hobby .inner{
+    background-color: #fff;
+    padding-bottom: 25px;
+}
+
+.top_hobby .box ul{
+    list-style-position: inside; 
+    padding-left: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border: 1px dashed #337ab7;
+    margin: 20px 50px 50px;
+    background-color: #F8F9FF;
+    /* width: 80%; */
+}
+
+.top_hobby .box_under{
+    display: flex;
+    text-align: center;
+    justify-content: space-evenly;
+    /* width: 98%; */
+    /* background-color: #23527c; */
+}
+
+.top_hobby .Running figure:nth-child(3) img,
+.top_hobby .Game figure:not(:nth-child(3)) img,
+.top_hobby .Travel figure:nth-child(3) img{
+    height: 225px;
+}
+
+@media screen and (max-width:520px){
+    .box_under{
+        flex-direction: column;
+    }
+    .box_under figure{
+        margin-bottom: 30px;
+    }
+    .box_under figure .w300,
+    .box_under figure .oya{
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+/* ＝＝＝＝＝＝＝＝＝＝＝＝
+フッター
+＝＝＝＝＝＝＝＝＝＝＝＝ */
+footer .inner{
+    background-color: #23527c;
+}
+footer .footerlogo{
+    /* background-color: #3e3e3e; */
+    text-align: center;
+}
+
+footer .footerlogo p a{
     color: #fff;
-    cursor: pointer; /*カーソルがのっかったときに指マークになる*/
-    transition: 0.3s; /* 0.3秒かけて遷移*/
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 70px;
 }
 
-.contact button[type="button"]{
-    background-color: #ccc;
-    color: #333;
-    width: 80px;
+footer .footer_under ul{
+    list-style: inside;
+    color: #fff;
+    padding-left: 430px;
 }
 
-.contact button:hover{
-    opacity: 0.5; /*不透明度*/
+footer .footer_under ul a{
+    color: #fff;
+}
+footer .footer_down{
+    background-color: #23527c;
+    color: #fff;
+    line-height: 50px;
+    text-align: center;
+}
+@media screen and (max-width:520px){
+    .box_under{
+        flex-direction: column;
+    }
+    .box_under figure{
+        margin-bottom: 30px;
+    }
+    .box_under figure .w300,
+    .box_under figure .oya{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    footer .footer_under ul{
+        list-style: inside;
+        color: #fff;
+        padding-left: 200px;
+    }
 }
