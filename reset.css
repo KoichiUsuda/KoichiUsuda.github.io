@@ -25,8 +25,6 @@ time, mark, audio, video {
     font-size:100%;
     vertical-align:baseline;
     background:transparent;
-    font-weight: normal;
-    box-sizing: border-box; /*paddingをどれだけ入れようと画像の位置は変わらない*/
 }
 
 body {
@@ -98,12 +96,8 @@ hr {
     margin:1em 0;
     padding:0;
 }
-/* 
+
 input, select, img{
     vertical-align:bottom;
-} */
-
-input, select, img {
-    vertical-align:middle;
 }
-/*inputと文字を近づけるために入力*/
+/* 画像の謎の隙間を消すためにmiddle→bottom*/
